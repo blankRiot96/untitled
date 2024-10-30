@@ -1,6 +1,6 @@
 import pygame
 
-from src import shared
+from src.shared import Canvas, Events
 from src.states import StateManager
 
 
@@ -12,22 +12,22 @@ class Core:
     def win_init(self):
         pygame.display.set_caption("Untitled Game")
         pygame.init()
-        shared.screen = pygame.display.set_mode((1100, 650))
-        shared.srect = shared.screen.get_rect()
-        shared.clock = pygame.Clock()
+        Canvas.screen = pygame.display.set_mode((1100, 650))
+        Canvas.screen_rect = Canvas.screen.get_rect()
+        Events.clock = pygame.Clock()
 
     def get_events(self):
-        shared.events = pygame.event.get()
-        shared.dt = shared.clock.tick(60) / 1000
-        shared.dt = max(shared.dt, 0.1)
-        shared.keys = pygame.key.get_pressed()
-        shared.kp = pygame.key.get_just_pressed()
-        shared.kr = pygame.key.get_just_released()
-        shared.mouse_pos = pygame.Vector2(pygame.mouse.get_pos())
-        shared.mouse_press = pygame.mouse.get_pressed()
+        Events.events = pygame.event.get()
+        Events.dt = Events.clock.tick(60) / 1000
+        Events.dt = max(Events.dt, 0.1)
+        Events.keys = pygame.key.get_pressed()
+        Events.keys_just_pressed = pygame.key.get_just_pressed()
+        Events.keys_just_released = pygame.key.get_just_released()
+        Events.mouse_pos = pygame.Vector2(pygame.mouse.get_pos())
+        Events.mouse_press = pygame.mouse.get_pressed()
 
     def check_for_exit(self):
-        for event in shared.events:
+        for event in Events.events:
             if event.type == pygame.QUIT:
                 raise SystemExit
 
@@ -37,7 +37,7 @@ class Core:
         self.state_manager.update()
 
     def draw(self):
-        shared.screen.fill("black")
+        Canvas.screen.fill("black")
         self.state_manager.draw()
         pygame.display.flip()
 
