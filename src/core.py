@@ -12,13 +12,13 @@ class Core:
     def win_init(self):
         pygame.display.set_caption("Untitled Game")
         pygame.init()
-        Canvas.screen = pygame.display.set_mode((1100, 650))
+        Canvas.screen = pygame.display.set_mode((1100, 650), vsync=1)
         Canvas.screen_rect = Canvas.screen.get_rect()
         Events.clock = pygame.Clock()
 
     def get_events(self):
         Events.events = pygame.event.get()
-        Events.dt = Events.clock.tick(60) / 1000
+        Events.dt = Events.clock.tick() / 1000
         Events.dt = max(Events.dt, 0.1)
         Events.keys = pygame.key.get_pressed()
         Events.keys_just_pressed = pygame.key.get_just_pressed()

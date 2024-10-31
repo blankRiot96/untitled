@@ -16,6 +16,7 @@ class Entities:
 class Canvas:
     screen: pygame.Surface
     screen_rect: pygame.Rect
+    entities_scale: float
 
 
 class Events:
