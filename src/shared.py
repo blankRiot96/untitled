@@ -6,6 +6,11 @@ import pygame
 
 if t.TYPE_CHECKING:
     from src.enums import State
+    from src.player import Player
+
+
+class Entities:
+    player: Player
 
 
 class Canvas:

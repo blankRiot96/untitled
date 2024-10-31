@@ -1,9 +1,14 @@
-from src.enums import State
+from src.player import Player
+from src.shared import Entities, States
 
 
 class GameState:
+    def __init__(self) -> None:
+        States.next_state = None
+        Entities.player = Player()
+
     def update(self):
-        pass
+        Entities.player.update()
 
     def draw(self):
-        pass
+        Entities.player.draw()

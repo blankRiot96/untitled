@@ -1,8 +1,8 @@
 import typing as t
 
-from src import shared
 from src.enums import State
 from src.game_state import GameState
+from src.shared import States
 
 
 class StateLike(t.Protocol):
@@ -17,18 +17,18 @@ class StateManager:
             State.GAME: GameState,
         }
 
-        shared.next_state = State.GAME
+        States.next_state = State.GAME
         self.create_state_object()
 
     def create_state_object(self):
-        assert shared.next_state
-        state_cls = self.state_dict[shared.next_state]
+        assert States.next_state
+        state_cls = self.state_dict[States.next_state]
 
         self.state_obj = state_cls()
 
     def update(self):
         self.state_obj.update()
-        if shared.next_state is not None:
+        if States.next_state is not None:
             self.create_state_object()
 
     def draw(self):
