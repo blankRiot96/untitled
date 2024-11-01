@@ -15,3 +15,8 @@ def load_image(
         return img.convert_alpha()
 
     return img.convert()
+
+
+@lru_cache
+def load_font(path: pygame.typing.FileLike | None, size: int) -> pygame.Font:
+    return pygame.Font(path, size)
