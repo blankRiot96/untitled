@@ -7,6 +7,7 @@ import pygame
 if t.TYPE_CHECKING:
     from src.enums import State
     from src.player import Player
+    from src.utils.camera import Camera
 
 
 class Entities:
@@ -14,9 +15,11 @@ class Entities:
 
 
 class Canvas:
+    entities_scale: float
+
     screen: pygame.Surface
     screen_rect: pygame.Rect
-    entities_scale: float
+    camera: Camera
 
 
 class Events:
