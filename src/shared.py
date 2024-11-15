@@ -5,6 +5,7 @@ import typing as t
 import pygame
 
 if t.TYPE_CHECKING:
+    from src.enemy import EnemySpawner
     from src.enums import State
     from src.player import Player
     from src.utils.camera import Camera
@@ -12,6 +13,7 @@ if t.TYPE_CHECKING:
 
 class Entities:
     player: Player
+    enemy_spawners: list[EnemySpawner]
 
 
 class Canvas:

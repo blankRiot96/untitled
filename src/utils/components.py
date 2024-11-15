@@ -38,13 +38,13 @@ class Pellet:
         self.distance = distance
 
         self.dv = pygame.Vector2(math.cos(radians) * speed, math.sin(radians) * speed)
-        self.rect = pygame.Rect(self.position, self.image.get_size())
+        self.rect = self.image.get_rect(center=self.position)
         self.alive = True
         self.moved = 0.0
 
     def update(self):
         self.position += self.dv * Events.dt
-        self.rect.topleft = self.position
+        self.rect.center = self.position
 
         if self.distance is not None:
             self.moved += (self.dv * Events.dt).magnitude()
@@ -90,3 +90,19 @@ class GenericGun:
     def draw(self):
         for pellet in self.pellets:
             pellet.draw()
+
+
+class Tracker:
+    """
+    Basic position modification system that goes
+    near target entity until set distance
+    """
+
+    def __init__(self, pos, speed, min_distance=0.0) -> None:
+        self.pos = pygame.Vector2(pos)
+        self.speed = speed
+        self.min_distance = min_distance
+
+    def update(self, target: pygame.Vector2) -> None:
+        if self.pos.distance_to(target) > self.min_distance:
+            self.pos.move_towards_ip(target, self.speed * Events.dt)

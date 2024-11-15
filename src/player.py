@@ -37,7 +37,7 @@ class Player:
 
     def check_gun_shoot(self):
         if Events.mouse_press[0]:
-            screen_pos = Canvas.camera.transform(self.pos)
+            screen_pos = Canvas.camera.transform(self.rect.center)
             self.gun.add_pellet(
                 math.atan2(
                     Events.mouse_pos.y - screen_pos.y, Events.mouse_pos.x - screen_pos.x

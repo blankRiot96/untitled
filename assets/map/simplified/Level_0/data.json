@@ -24,6 +24,30 @@
 				"color": 12470831,
 				"customFields" : {}
 			}
+		],
+		"EnemySpawner": [
+			{
+				"id": "EnemySpawner",
+				"iid": "94b5cae0-9b00-11ef-bf4e-353b59ff07e9",
+				"layer": "Entities",
+				"x": 864,
+				"y": 320,
+				"width": 16,
+				"height": 16,
+				"color": 12796887,
+				"customFields" : {}
+			},
+			{
+				"id": "EnemySpawner",
+				"iid": "9530c740-9b00-11ef-bf4e-7154be75ec2c",
+				"layer": "Entities",
+				"x": 448,
+				"y": 304,
+				"width": 16,
+				"height": 16,
+				"color": 12796887,
+				"customFields" : {}
+			}
 		]
 	}
 }
