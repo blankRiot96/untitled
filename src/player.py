@@ -18,7 +18,7 @@ class Player:
         self.dv = pygame.Vector2()
 
         self.gun = utils.GenericGun(
-            utils.load_image("assets/pellet.png", True, 2.5),
+            utils.load_image("assets/pellet.png", True, Canvas.entities_scale),
             200,
             pellet_distance=1000,
             cool_down=0.1,
